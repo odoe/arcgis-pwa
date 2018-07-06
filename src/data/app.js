@@ -1,31 +1,37 @@
-import FeatureLayer from "esri/layers/FeatureLayer";
-import WebMap from "esri/WebMap";
+import EsriMap from "esri/Map";
 import SceneView from "esri/views/SceneView";
+import TileLayer from "esri/layers/TileLayer";
+import VectorTileLayer from "esri/layers/VectorTileLayer";
+import CompassViewModel from "esri/widgets/Compass/CompassViewModel";
 
-const featureLayer = new FeatureLayer({
-  id: "states",
-  portalItem: {
-    id: "b234a118ab6b4c91908a1cf677941702"
+export const webmap = new EsriMap({
+  basemap: {
+    baseLayers: [
+      new TileLayer({
+        url: "https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer"
+      }),
+      new VectorTileLayer({
+        portalItem: {
+          id: "86d5ed4b6dc741de9dad5f0fbe09ae95"
+        }
+      })
+    ]
   },
-  outFields: ["NAME", "STATE_NAME", "VACANT", "HSE_UNITS"],
-  title: "U.S. counties"
+  ground: "world-elevation"
 });
 
-const webmap = new WebMap({
-  portalItem: {
-    id: "3ff64504498c4e9581a7a754412b6a9e"
-  },
-  layers: [featureLayer]
+export const view = new SceneView({
+  map: webmap,
+  center: [-116.5, 33.80],
+  scale: 50000,
+  ui: {
+    components: ["attribution", "navigation-toggle", "zoom"]
+  }
 });
+
+export const compassViewModel = new CompassViewModel({ view });
 
 export const init = (container) => {
-  const view = new SceneView({
-    map: webmap,
-    container
-  });
-  featureLayer.when(() => {
-    view.goTo({ target: featureLayer.fullExtent });
-  });
-
+  view.container = container;
   return view;
 };

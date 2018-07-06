@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 
 import { Header } from "./components/header";
 import { WebMapComponent } from "./components/webmapview";
+import { Info } from "./components/info";
 
 import "./css/main.scss";
 
@@ -14,8 +15,9 @@ import "./css/main.scss";
  */
 ReactDOM.render(
   <div className="main">
-    <Header appName="Webpack App"/>
+    <Header appName="Demo App"/>
     <WebMapComponent />
+    <Info />
   </div>,
   document.getElementById("app")
 );

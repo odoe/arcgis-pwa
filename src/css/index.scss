@@ -63,3 +63,32 @@ header.top-nav {
     margin: 0;
   }
 }
+
+// widgets
+.info {
+  display: flex;
+  background: $blue;
+  width: 100%;
+  height: 175px;
+}
+
+.compass {
+  display: flex;
+  align-items: center;
+  padding: 0 1em 0 1em;
+}
+
+.compass__icon {
+  height: 100px;
+  width: 100px;
+  color: $off-white;
+}
+
+.camera_details {
+  display: flex;
+  align-items: center;
+  padding: 0 1em 0 1em;
+  color: $off-white;
+  border-right: 1px solid $off-white;
+  border-left: 1px solid $off-white;
+}
