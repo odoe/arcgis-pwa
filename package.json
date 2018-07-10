@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@arcgis/webpack-plugin": "^4.7.13",
+    "@arcgis/webpack-plugin": "^4.8.1",
     "@babel/core": "^7.0.0-beta.51",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
